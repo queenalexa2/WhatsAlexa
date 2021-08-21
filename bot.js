@@ -163,10 +163,28 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
         
         } else if (config.BOT_STATUS == 'recording') {
             await conn.updatePresence(msg.key.remoteJid, Presence.recording);
-        } 
-        
+        }
+    
         if (msg.messageStubType === 32 || msg.messageStubType === 28) {
 
+         if (config.WELCOME_TYPE == 'user dp') {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                let pp
+                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+
+         } else if (config.WELCOME_TYPE == 'alexa image') {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
+
+         } else if (config.WELCOME_TYPE == 'alexa gif') {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
+         } else {
             var gb = await getMessage(msg.key.remoteJid, 'goodbye');
             if (gb !== false) {
                 let pp
@@ -176,10 +194,28 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
             }
             return;
         } else if (msg.messageStubType === 27 || msg.messageStubType === 31) {
-            
+           
+         if (config.GOODBYE_TYPE == 'user dp') {
             var gb = await getMessage(msg.key.remoteJid);
             if (gb !== false) {
                let pp
+                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+
+         } else if (config.GOODBYE_TYPE == 'alexa image') {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
+
+         } else if (config.GOODBYE_TYPE == 'alexa gif') {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
+         } else {
+            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+            if (gb !== false) {
+                let pp
                 try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
                 await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
                 await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
@@ -238,10 +274,24 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
                         } else {
                             whats = new Message(conn, msg);
                         }
-                        
+                       
                         if (command.deleteCommand && msg.key.fromMe) {
                             await whats.delete(); 
-                        }
+                      
+                        } else if (command.fromMe == 'true' && !msg.key.fromMe) {
+                            await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 ⚠️ INFORMATION ⚠️ 』*\n\n*💬 WhatsAlexa is Working as Private*\n_Please Contact the owner of this bot and Make the Bot, Public Mode to use this Command._\n*✍️ Change Needed : Private - Public*\n\n*🤠 Thank You For using WhatsAlexa 💖*\n\n' });
+                            await conn.sendMessage(conn.user.jid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 INFORMATION 』*\n\n*💬 WhatsAlexa is Working as Private*\n_Someone is Trying to use your bot_\n\n_If you want to make them to use this bot, You can Type_ *#editvar WORK_TYPE:public* _& make the bot as Public Mode._\n\n*Please Note: If You make the bot public, the admin & owner commands will not be public ( Others can't use ).*\n\n*✍️ Change Needed : Private - Public*\n\n*🤠 Thank You For using WhatsAlexa 💖*\n\n' });
+
+                        } else if (command.fromMe == 'false' && msg.key.fromMe) {
+                            await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 ⚠️ INFORMATION ⚠️ 』*\n\n*💬 WhatsAlexa is Working as Public*\n_Please Make the Bot, Private Mode to use this Command._\n*✍️ Change Needed : Public - Private*\n\n*🤠 Thank You For using WhatsAlexa 💖*\n\n' });
+                            await conn.sendMessage(conn.user.jid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 ⚠️ INFORMATION ⚠️ 』*\n\n*💬 WhatsAlexa is Working as Public*\n_So You can't use the bot as Private. Only Private/admin/owner commands can be used as Private._\n\n_If you want to use this bot, You can Type_ *#editvar WORK_TYPE:private* _& make the bot as Private Mode._\n\n*Please Note: If You make the bot private, the Others can't use the bot.*\n\n*✍️ Change Needed : Public - Private*\n\n*🤠 Thank You For using WhatsAlexa 💖*\n\n' });
+
+                        } else if (command.onlyPm == 'true' && chat.jid.includes('-')) {
+                            await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 ⚠️ INFORMATION ⚠️ 』*\n\n_This command is registered in the bot as_ *Private Chats!*\n*⚠️ This Command can only be used in Private Chats! ⚠️*\n\n' });
+
+                        } else if (command.onlyGroup == 'true' && !chat.jid.includes('-')) {
+                            await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, { caption: '\n\n*『 ⚠️ INFORMATION ⚠️ 』*\n\n_This command is registered in the bot as_ *Group Chats!*\n*⚠️ This Command can only be used in Group Chats! ⚠️*\n\n' });
+                        } 
                         
                         try {
                             await command.function(whats, match);
