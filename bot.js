@@ -167,61 +167,61 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
     
         if (msg.messageStubType === 32 || msg.messageStubType === 28) {
 
-         if (config.WELCOME_TYPE == 'user dp') {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                let pp
-                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
-                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
-                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+           if (config.WELCOME_TYPE == 'user dp') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  let pp
+                  try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                  await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                  await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
 
-         } else if (config.WELCOME_TYPE == 'alexa image') {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
+           } else if (config.WELCOME_TYPE == 'alexa image') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
 
-         } else if (config.WELCOME_TYPE == 'alexa gif') {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
-         } else {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                let pp
-                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
-                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
-                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
-            }
-            return;
+           } else if (config.WELCOME_TYPE == 'alexa gif') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
+           } else {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  let pp
+                  try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                  await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                  await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+              }
+              return;
         } else if (msg.messageStubType === 27 || msg.messageStubType === 31) {
            
-         if (config.GOODBYE_TYPE == 'user dp') {
-            var gb = await getMessage(msg.key.remoteJid);
-            if (gb !== false) {
-               let pp
-                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
-                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
-                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+           if (config.GOODBYE_TYPE == 'user dp') {
+              var gb = await getMessage(msg.key.remoteJid);
+              if (gb !== false) {
+                 let pp
+                  try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                  await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                  await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
 
-         } else if (config.GOODBYE_TYPE == 'alexa image') {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
-
-         } else if (config.GOODBYE_TYPE == 'alexa gif') {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
-         } else {
-            var gb = await getMessage(msg.key.remoteJid, 'goodbye');
-            if (gb !== false) {
-                let pp
-                try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
-                await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
-                await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+           } else if (config.GOODBYE_TYPE == 'alexa image') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
+ 
+           } else if (config.GOODBYE_TYPE == 'alexa gif') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
+           } else {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  let pp
+                  try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
+                  await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => {
+                  await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
+              }
+              return;
             }
-            return;
-        }
 
         events.commands.map(
             async (command) =>  {
