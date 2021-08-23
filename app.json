@@ -41,10 +41,15 @@
             "required": true,
             "value": "^[#]"
         },
-        "NO_LOG": {
-            "description": "Set true if you don't want to see error log.",
-            "required": true,
-            "value": "false"
+        "WELCOME_TYPE": {
+            "description": "Type of Welcome Message! text => Welcome with the Welcome message as Text Itself, user dp => Welcome with user's dp, ( Welcome message as Caption ), alexa image => Welcome with alexa's official logo, ( Welcome Message as Caption ), alexa gif => Welcome with Alexa's official logo gif, ( Welcome Message as Caption ).. [ Select any on only! ( text, user dp, alexa image, alexa gif ) ]",
+            "required": false,
+            "value": "user dp"
+        },
+        "GOODBYE_TYPE": {
+            "description": "Type of Goodbye Message! text => Goodbye with the Goodbye message as Text Itself, user dp => Goodbye with user's dp, ( Goodbye message as Caption ), alexa image => Goodbye with alexa's official logo, ( Goodbye Message as Caption ), alexa gif => Goodbye with Alexa's official logo gif, ( Goodbye Message as Caption ).. [ Select any on only! ( text, user dp, alexa image, alexa gif ) ]",
+            "required": false,
+            "value": "user dp"
         },
         "SEND_READ": {
             "description": "The bot reads the incoming messages ( only commands sent by others so privacy is not breaking there ).",
