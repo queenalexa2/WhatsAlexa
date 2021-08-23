@@ -204,16 +204,16 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
                   await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message }); });
 
            } else if (config.GOODBYE_TYPE == 'alexa image') {
-              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              var gb = await getMessage(msg.key.remoteJid);
               if (gb !== false) {
                   await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.png"), MessageType.image, {caption:  gb.message }); });
  
            } else if (config.GOODBYE_TYPE == 'alexa gif') {
-              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              var gb = await getMessage(msg.key.remoteJid);
               if (gb !== false) {
                   await conn.sendMessage(msg.key.remoteJid, fs.readFileSync("./src/image/WhatsAlexa.mp4"), MessageType.video, {mimetype: Mimetype.gif, caption:  gb.message }); });
            } else {
-              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              var gb = await getMessage(msg.key.remoteJid);
               if (gb !== false) {
                   let pp
                   try { pp = await conn.getProfilePicture(msg.messageStubParameters[0]); } catch { pp = await conn.getProfilePicture(); }
