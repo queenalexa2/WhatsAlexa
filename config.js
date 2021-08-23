@@ -25,6 +25,8 @@ module.exports = {
     DEMOTEMSG: process.env.DEMOTE_MESSAGE === undefined ? 'default' : process.env.DEMOTE_MESSAGE,
     BANMSG: process.env.BAN_MESSAGE === undefined ? 'default' : process.env.BAN_MESSAGE,
     AFKMSG: process.env.AFK_MESSAGE === undefined ? 'default' : process.env.AFK_MESSAGE,
+    WELCOME_TYPE: process.env.WELCOME_TYPE === undefined ? 'user dp' : process.env.WELCOME_TYPE,
+    GOODBYE_TYPE: process.env.GOODBYE_TYPE === undefined ? 'user dp' : process.env.GOODBYE_TYPE,
     BOT_STATUS: process.env.BOT_STATUS === undefined ? 'online' : process.env.BOT_STATUS,
     HANDLERS: process.env.HANDLERS === undefined ? '^[#]' : process.env.HANDLERS,
     SEND_READ: process.env.SEND_READ === undefined ? false : convertToBool(process.env.SEND_READ),
