@@ -166,8 +166,13 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
         }
     
         if (msg.messageStubType === 32 || msg.messageStubType === 28) {
-
-           if (config.WELCOME_TYPE == 'user dp') {
+            
+           if (config.WELCOME_TYPE == 'text') {
+              var gb = await getMessage(msg.key.remoteJid, 'goodbye');
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, gb.message, MessageType.text);
+                  
+           } else if (config.WELCOME_TYPE == 'user dp') {
               var gb = await getMessage(msg.key.remoteJid, 'goodbye');
               if (gb !== false) {
                   let pp
@@ -194,8 +199,13 @@ ${chalk.blue.italic('Made By TOXIC-DEVIL')}`);
               }
               return;
         } else if (msg.messageStubType === 27 || msg.messageStubType === 31) {
-           
-           if (config.GOODBYE_TYPE == 'user dp') {
+            
+           if (config.GOODBYE_TYPE == 'text') {
+              var gb = await getMessage(msg.key.remoteJid);
+              if (gb !== false) {
+                  await conn.sendMessage(msg.key.remoteJid, gb.message, MessageType.text);
+                  
+           } else if (config.GOODBYE_TYPE == 'user dp') {
               var gb = await getMessage(msg.key.remoteJid);
               if (gb !== false) {
                  let pp
